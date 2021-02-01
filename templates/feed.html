@@ -1,3 +1,8 @@
+<!--import contents from base.html-->
+{% extends 'base.html' %}
+
+{% block content %}
+<!--
 <!DOCTYPE html>
 <html>
   <head>
@@ -9,7 +14,7 @@
   <body>
 
 
-     <!--navbar-->
+     
      <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
           <a class="navbar-item" href="feed.html" style=" font-weight: bold; font-family: 'Comic Sans MS', sans-serif;">
@@ -37,7 +42,7 @@
                 My Profile
               </a>
 
-            <!--
+        
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link">
                 More
@@ -59,7 +64,7 @@
                 </a>
               </div>
             </div>
-          </div> -->
+          </div> 
       
           <div class="navbar-end">
             <div class="navbar-item">
@@ -83,41 +88,51 @@
   <section class="section">
     <div class="container">
 
-        <!--profile heading-->
-        <section class="hero is-medium is-primary is-bold">
-            <div class="hero-body">
-              <div class="container">
+      -->
 
-                <h1 class="title">
-                    Rover
-                </h1>
-
-                <h2 class="subtitle">
-                    @rover
-                </h2>
-
-                <p>Hi, I am Rover. I love treats.</p>
-
-              </div>
-            </div>
-          </section>
-
-      
+      <!--heading-->
+      <h1 class="title">
+        Dog Chat
+      </h1>
+      <p class="subtitle">
+        My Feed
+      </p>
 
     <!--post1-->
+    {% for post in posts %}
     <div class="box">
         <article class="media">
           <div class="media-left">
             <figure class="image is-64x64">
-              <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+            
+              <!-- <img src="{{ url_for('feed') }}" alt="Image"> --> 
+
+              <!-- include image based of post name-->
+              <img src="{{ url_for('static', filename = post[0] + '.jpg') }}" alt="Image">
+
             </figure>
           </div>
           <div class="media-content">
             <div class="content">
               <p>
-                <strong>Rover</strong> <small>@rover</small> <small>31m</small>
-                <br>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+               <!-- <strong>Rover</strong> <small>@rover</small> <small>31m</small> -->
+
+             <!--  <strong> {{ get_dog_by_handle( post[0] )['name'] }} </strong> <small> @{{ post[0] }} </small> -->
+               <!--<small>31m</small> -->
+             
+              <!-- <a href="/dog/ma"> <strong> {{get_dog_by_handle( post[0] )['name']}} </strong> </a><small> @{{ post[0] }} </small> --> 
+             
+              <!--go to link based upon username-->
+          <!--<a href="/dog/{{post[0]}}"> <strong> {{get_dog_by_handle( post[0] )['name']}} </strong> </a><small> @{{ post[0] }} </small> -->
+
+          <!--go to link based upon username with url based upon function name and such-->
+          <!-- url_for( function_name, such )  -->
+          <a href="{{ url_for( 'dog', handle = post[0] ) }}"> <strong> {{get_dog_by_handle( post[0] )['name']}} </strong> </a>
+          <small> @{{ post[0] }} </small>
+
+               <br>
+               <!--Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.-->
+               {{post[1]}}
               </p>
             </div>
             <nav class="level is-mobile">
@@ -142,10 +157,13 @@
           </div>
         </article>
       </div>
+    {% endfor %}
 
-
-
+<!--
     </div>
   </section>
   </body>
 </html>
+-->
+
+{% endblock %}

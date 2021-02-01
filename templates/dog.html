@@ -83,28 +83,81 @@
   <section class="section">
     <div class="container">
 
-      <!--heading-->
-      <h1 class="title">
-        Dog Chat
-      </h1>
-      <p class="subtitle">
-        My Feed
-      </p>
+        <!--profile heading-->
+        <!--
+        <section class="hero is-medium is-primary is-bold">
+            <div class="hero-body">
+              <div class="container">
 
-    <!--post1-->
+                use variables from app.py for dog_name and dog_handle-
+                <h1 class="title">
+                    {{dog_name}}
+                </h1>
+
+                <h2 class="subtitle">
+                  {{dog_handle}}
+                </h2>
+
+                <p>Hi, I am Rover. I love treats.</p>
+
+              </div>
+            </div>
+          </section>
+        -->
+
+        <section class="hero is-medium is-primary is-bold">
+          <div class="hero-body">
+            <div class="container">
+
+              <h1 class="title">
+                  {{ dog["name"] }}
+              </h1>
+
+              <h2 class="subtitle">
+                {{ dog["handle"] }}
+              </h2>
+
+              <p>   {{ dog["bio"] }} </p>
+
+              <p>number of likes: {{ dog["likes"] }} </p>
+
+            </div>
+          </div>
+        </section>
+
+          <!--list of posts from app.py-->
+          <!--
+          <ul>
+          {% for post in posts %}
+          <li>{{ post }} </li>
+          {% endfor %}
+        </ul>
+        -->
+      
+
+    <!--post-->
+    {% for post in posts %}
     <div class="box">
         <article class="media">
           <div class="media-left">
             <figure class="image is-64x64">
-              <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+           <!-- <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image"> -->
+           <img src="{{ url_for('static', filename = post[0] + '.jpg') }}" alt="Image">
+
+
             </figure>
           </div>
           <div class="media-content">
             <div class="content">
               <p>
-                <strong>Rover</strong> <small>@rover</small> <small>31m</small>
+             <!--   <strong>Rover</strong> <small>@rover</small> <small>31m</small> -->
+             <strong>{{ dog["name"] }}</strong> <small>@dog{{ dog['handle'] }}</small>
+             <!--<small>31m</small>-->
+
                 <br>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+               <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.-->
+               <!--  {{ post }} -->
+               {{ post[1] }}  <!--  provide post based upon user-->
               </p>
             </div>
             <nav class="level is-mobile">
@@ -129,7 +182,7 @@
           </div>
         </article>
       </div>
-
+      {% endfor %}
 
 
     </div>
