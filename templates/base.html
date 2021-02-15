@@ -33,9 +33,16 @@
               Feed
             </a>
 
+            <!--
             <a class="navbar-item">
                 My Profile
               </a>
+            -->
+
+            <!--show current user name from app.py in feed() of / route-->
+            <a class="navbar-item">
+             Welcome {{user}}
+            </a>
 
             <!--sub categories-->
             <!--
@@ -69,9 +76,18 @@
                 <a class="button is-primary">
                   <strong>Sign up</strong>
                 </a>
-                <a class="button is-light">
+                
+                <!--
+                <a class="button is-light"> 
                   Log in
                 </a>
+              -->
+
+                 <!--link goes to url part of /logout from app.py-->
+                <a class="button is-light" href="{{url_for('logout')}}"> 
+                  Log out
+                </a>
+
               </div>
             </div>
           </div>
