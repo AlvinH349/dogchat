@@ -108,7 +108,8 @@
               <!-- <img src="{{ url_for('feed') }}" alt="Image"> --> 
 
               <!-- include image based of post name-->
-              <img src="{{ url_for('static', filename = post[0] + '.jpg') }}" alt="Image">
+            <img src="{{ url_for('static', filename = post[0] + '.jpg') }}" alt="Image"> 
+     
 
             </figure>
           </div>
@@ -127,6 +128,8 @@
 
           <!--go to link based upon username with url based upon function name and such-->
           <!-- url_for( function_name, such )  -->
+
+
           <a href="{{ url_for( 'dog', handle = post[0] ) }}"> <strong> {{get_dog_by_handle( post[0] )['name']}} </strong> </a>
           <small> @{{ post[0] }} </small>
 
