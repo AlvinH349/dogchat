@@ -40,7 +40,8 @@
             -->
 
             <!--show current user name from app.py in feed() of / route-->
-            <a class="navbar-item">
+            <!--link is based upon app.py from authentication current user-->
+            <a class="navbar-item" href="{{ url_for('dog', handle=user) }}">
              Welcome {{user}}
             </a>
 
