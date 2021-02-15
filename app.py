@@ -6,14 +6,14 @@ from fake_data import dogs, posts, get_dog_by_handle, get_posts_by_handle
 from sec import hi #import function hi() from python file, sec.py
 
 # https://flask-httpauth.readthedocs.io/en/latest/
-#from flask_httpauth import HTTPBasicAuth
+from flask_httpauth import HTTPBasicAuth
 from werkzeug.security import generate_password_hash, check_password_hash
 
 #app object contains templates and variable of static folder name url path
 app = Flask(__name__, template_folder="templates", static_url_path = '/static')
 
 # object that refereances authentication
-#auth = HTTPBasicAuth()
+auth = HTTPBasicAuth()
 
 #set of users for authenthication
 users = {
@@ -25,19 +25,20 @@ users = {
 
 #check password and username through dictionary of pass and users
 #if exist, then return username
-'''
+
 @auth.verify_password
 def verify_password(username, password):
     if username in users and \
             check_password_hash(users.get(username), password):
         return username
-'''
+
+
 #call and use app object
-#@auth.login_required #allow access if pass authnithication 
 @app.route('/') # location of page => runs function feed()
+@auth.login_required #allow access if pass authnithication 
 def feed():
-    #return render_template('feed.html', posts=posts, get_dog_by_handle = get_dog_by_handle, user=auth.current_user() )
-    return render_template('feed.html', posts=posts, get_dog_by_handle = get_dog_by_handle )
+    return render_template('feed.html', posts=posts, get_dog_by_handle = get_dog_by_handle, user=auth.current_user() )
+    #return render_template('feed.html', posts=posts, get_dog_by_handle = get_dog_by_handle )
 
 '''
 @app.route('/dog') 
@@ -52,7 +53,7 @@ def dog():
 '''
 #add specific user page
 @app.route('/dog/<string:handle>') 
-#@auth.login_required #allow access if pass authnithication 
+@auth.login_required #allow access if pass authnithication 
 def dog(handle):
     dog = get_dog_by_handle(handle)
     posts = get_posts_by_handle(handle)

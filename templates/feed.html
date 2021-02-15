@@ -108,8 +108,7 @@
               <!-- <img src="{{ url_for('feed') }}" alt="Image"> --> 
 
               <!-- include image based of post name-->
-            <img src="{{ url_for('static', filename = post[0] + '.jpg') }}" alt="Image"> 
-     
+              <img src="{{ url_for('static', filename = user + '.jpg') }}" alt="Image"> 
 
             </figure>
           </div>
@@ -118,12 +117,65 @@
 
               <p>
 
-          <a href="{{ url_for( 'dog', handle = post[0] ) }}"> <strong> New Post {{get_dog_by_handle( post[0] )['name']}} </strong> </a>
-          <small> @{{ post[0] }} </small>
+                <!--
+          <a href="{{ url_for('dog', handle=user) }}"> <strong> New Post  </strong> </a>
+          <small> @{{user}} </small>
+          -->
 
                <br>
-               {{post[1]}}
+              <!-- post is here -->
 
+               <!-- <input type="text"> -->
+              <!--
+              <form>
+               <textarea name="w3review" id="w3review" rows="4" cols="50"> </textarea>
+                <input type="submit"/>
+              </form>
+            -->
+            <form>
+            <div class="field">
+              <label class="label">New Post</label>
+              <div class="control">
+                <textarea class="textarea" placeholder="Enter your post here"></textarea>
+              </div>
+            </div>
+            
+            <!--
+            <div class="field">
+              <div class="control">
+                <label class="checkbox">
+                  <input type="checkbox">
+                  I agree to the <a href="#">terms and conditions</a>
+                </label>
+              </div>
+            </div>
+            
+
+            <div class="field">
+              <div class="control">
+                <label class="radio">
+                  <input type="radio" name="question">
+                  Yes
+                </label>
+                <label class="radio">
+                  <input type="radio" name="question">
+                  No
+                </label>
+              </div>
+            </div>
+            -->
+            
+            <div class="field is-grouped">
+              <div class="control">
+                <button class="button is-link">Submit</button>
+              </div>
+
+               <!--
+              <div class="control">
+                <button class="button is-link is-light">Cancel</button>
+              </div>
+            </div>
+          -->
               </p>
 
             </div>
@@ -149,7 +201,7 @@
           </div>
         </article>
       </div>
-
+    </form>
 
 
 
