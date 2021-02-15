@@ -98,6 +98,61 @@
         My Feed
       </p>
 
+
+      <!--place where user place new post-->
+      <div class="box">
+        <article class="media">
+          <div class="media-left">
+            <figure class="image is-64x64">
+            
+              <!-- <img src="{{ url_for('feed') }}" alt="Image"> --> 
+
+              <!-- include image based of post name-->
+            <img src="{{ url_for('static', filename = post[0] + '.jpg') }}" alt="Image"> 
+     
+
+            </figure>
+          </div>
+          <div class="media-content">
+            <div class="content">
+
+              <p>
+
+          <a href="{{ url_for( 'dog', handle = post[0] ) }}"> <strong> New Post {{get_dog_by_handle( post[0] )['name']}} </strong> </a>
+          <small> @{{ post[0] }} </small>
+
+               <br>
+               {{post[1]}}
+
+              </p>
+
+            </div>
+            <nav class="level is-mobile">
+              <div class="level-left">
+                <a class="level-item" aria-label="reply">
+                  <span class="icon is-small">
+                    <i class="fas fa-reply" aria-hidden="true"></i>
+                  </span>
+                </a>
+                <a class="level-item" aria-label="retweet">
+                  <span class="icon is-small">
+                    <i class="fas fa-retweet" aria-hidden="true"></i>
+                  </span>
+                </a>
+                <a class="level-item" aria-label="like">
+                  <span class="icon is-small">
+                    <i class="fas fa-heart" aria-hidden="true"></i>
+                  </span>
+                </a>
+              </div>
+            </nav>
+          </div>
+        </article>
+      </div>
+
+
+
+
     <!--post1-->
     {% for post in posts %}
     <div class="box">
