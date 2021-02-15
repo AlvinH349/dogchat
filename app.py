@@ -18,7 +18,9 @@ auth = HTTPBasicAuth()
 #set of users for authenthication
 users = {
     #"username" :  generate_password_hash("password")
-    "Mary": generate_password_hash("Mary")
+    "Mary": generate_password_hash("Mary"),
+    "Charlie": generate_password_hash("Charlie"),
+    "Nessie": generate_password_hash("Nessie"),
 }
 
 #check password and username through dictionary of pass and users
